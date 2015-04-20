@@ -1,0 +1,18 @@
+.cv_tableheader{
+    padding:0px;
+    height:30px;
+    background:#87ceff;
+    font-weight: bold;
+}
+.cv_subheader{
+    background:#6495ed;
+    font-weight: bold
+}
+.cv_tablestyle{
+    /*background:#efefef;*/
+    background:#e1d2ef;
+    page-break-before:always;
+}
+.cv_content{
+    line-height: 28px;
+}
