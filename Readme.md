@@ -3,10 +3,13 @@
 ###配置环境及运行
 1.安装
 
-- pip
+- [pip](https://pypi.python.org/pypi/pip)
 - virtualenv
+
+    `pip install virtualenv`
+
 - pyh
-  - pyh无法从pip直接安装，请至[此处下载](https://github.com/hanxiaomax/pyh)并运行`setup.py`
+  - pyh无法从pip直接安装，请至[此处下载](https://github.com/hanxiaomax/pyh)并运行`python setup.py install`
     
 2.创建虚拟环境并切换
 

@@ -8,7 +8,7 @@ class Generator(object):
 
 	def __init__(self):
 		pass
-		
+
 	def makeTableWithSub(self,title,subtitles,infobuf=None):
 		"""
 		生成带有副表头的表
@@ -18,14 +18,14 @@ class Generator(object):
 			infobuf:表格内容
 		"""
 		self.table=table(cl="cv_tablestyle")#创建一个table
-		
+
 		header=tr(td(title,cl="cv_tableheader",colspan=len(subtitles)))#创建标题
 		#创建副标题
 		srow=tr()
 		for subtitle in subtitles:
 			#依次将各个副标题作为列，插入
 			srow<<td(subtitle,cl="cv_subheader")
-		
+
 		# 把表头和副表头都插入到表格中
 		self.table<<tbody()<<header+srow
 
@@ -35,11 +35,11 @@ class Generator(object):
 			r=tr(cl="cv_content")#新建一行
 			for j in range(0,len(subtitles)):#创建列，并逐个插入行中
 				r<<td(i*"$",cl="cv_content")
-			
+
 			self.table<<r#把该行插入表格
 
-		
-		
+
+
 		return self.table
 
 	def makeTable(self,title,infobuf=None):
@@ -59,7 +59,7 @@ class Generator(object):
 xxxx年－xxxx年，xx大学，机械工程学院，研究生/硕士<br/>
 xxxx年－xxxx年，xx大学，机械工程学院，研究生/博士<br/>
 			""",cl="cv_content"))
-		
+
 		self.table<<tbody()<<header+content
 		return self.table
 
@@ -84,7 +84,7 @@ xxxx年－xxxx年，xx大学，机械工程学院，研究生/博士<br/>
 		#先把4行插入表格，再把表格插入infocol这一列
 		infocol<<table()<<titlerow+officerow+telrow+emailrow
 		detailcol<<table()<<titleinfo+officeinfo+telinfo+emailinfo
-		
+
 		# 将3个td插入tr标签，再插入表格中
 		self.table<<tbody()<<tr(imagecol+infocol+detailcol)
 		return self.table
