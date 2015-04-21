@@ -55,10 +55,9 @@ class Generator(object):
 		header=tr(td(title,cl="cv_tableheader"))
 		# 循环创建内容
 		content=tr(td(u"""
-			1991年－1995年，东南大学，机械工程学院，本科/学士<br/>
-1995年－1997年，东南大学，机械工程学院，研究生/硕士<br/>
-2000年－2004年，东南大学，机械工程学院，研究生/博士<br/>
-2004年－2006年，美国亚利桑那大学＆密西根大学，系统与工业工程系＆工业工程与运筹系，博士后<br/>
+			xxxx年－xxxx年，xx大学，机械工程学院，本科/学士<br/>
+xxxx年－xxxx年，xx大学，机械工程学院，研究生/硕士<br/>
+xxxx年－xxxx年，xx大学，机械工程学院，研究生/博士<br/>
 			""",cl="cv_content"))
 		
 		self.table<<tbody()<<header+content
