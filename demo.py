@@ -26,10 +26,19 @@ class Generator(object):
 			#依次将各个副标题作为列，插入
 			srow<<td(subtitle,cl="cv_subheader")
 		
-		#创建内容行
+		# 把表头和副表头都插入到表格中
+		self.table<<tbody()<<header+srow
 
-		content=tr(td("",cl="cv_content"))
-		self.table<<tbody()<<header+srow+content#依次拆入table标签
+
+		# 开始创建内容
+		for i in range(0,10):
+			r=tr(cl="cv_content")#新建一行
+			for j in range(0,len(subtitles)):#创建列，并逐个插入行中
+				r<<td(i*"$",cl="cv_content")
+			
+			self.table<<r#把该行插入表格
+
+		
 		
 		return self.table
 
