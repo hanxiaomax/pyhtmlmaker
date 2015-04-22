@@ -91,7 +91,7 @@ xxxx年－xxxx年，xx大学，机械工程学院，研究生/博士<br/>
 
 if __name__ == '__main__':
 	page = PyH('My wonderful PyH page')
-	page.addCSS("style.css")
+	page.addStyleSnippet("style.css")
 	# page.addStyleSnippet('style.css') ＃或者可以把style.css中的代码插入html中
 	g=Generator()#表格生成器
 
@@ -109,5 +109,5 @@ if __name__ == '__main__':
 	page<<g.makeTableWithSub(u"专利",subtitles2)
 
 
-	page.printOut("demohtml.html")
+	page.printOut("demohtml.html")#还可以把编码方式通过第二个参数传入
 

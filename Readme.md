@@ -23,3 +23,6 @@ source ENV/bin/activate
 ```
 python demo.py
 ```
+
+
+[项目wiki](https://github.com/hanxiaomax/pyh/wiki)
