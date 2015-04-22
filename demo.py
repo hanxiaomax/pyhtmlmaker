@@ -64,7 +64,7 @@ xxxx年－xxxx年，xx大学，机械工程学院，研究生/博士<br/>
 		return self.table
 
 	def makeprofile(self,infobuf=None):
-		self.table=table(cl="cv_tablestyle")#总表
+		self.table=table(cl="cv_profiletable")#总表
 		#3列td：图片占位，需要填写的信息，信息内容
 		imagecol=td("",id="image",width="25%")
 		infocol=td(id="info",width="25%",colspan="4")

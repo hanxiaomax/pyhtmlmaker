@@ -25,3 +25,8 @@
 .cv_profile{
     text-align: left;
 }
+.cv_profiletable{
+    background:#ffffff;
+    page-break-before:always;
+    width: 1000px;
+}
