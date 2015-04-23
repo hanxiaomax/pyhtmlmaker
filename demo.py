@@ -9,7 +9,7 @@ class Generator(object):
 	def __init__(self):
 		pass
 
-	def makeTableWithSub(self,title,subtitles,infobuf=None):
+	def makeTableWithSub(self,title,subtitles,infobuf):
 		"""
 		生成带有副表头的表
 		params:
@@ -31,10 +31,10 @@ class Generator(object):
 
 
 		# 开始创建内容
-		for i in range(0,10):
-			r=tr(cl="cv_content")#新建一行
-			for j in range(0,len(subtitles)):#创建列，并逐个插入行中
-				r<<td(i*"$",cl="cv_content")
+		for info in infobuf:
+			r=tr(cl="cv_content")
+			for i in info:
+				r<<td(i,cl="cv_content")
 
 			self.table<<r#把该行插入表格
 
@@ -53,38 +53,26 @@ class Generator(object):
 		self.table=table(cl="cv_tablestyle")
 		# 创建表头
 		header=tr(td(title,cl="cv_tableheader"))
-		# 循环创建内容
-		content=tr(td(u"""
-			xxxx年－xxxx年，xx大学，机械工程学院，本科/学士<br/>
-xxxx年－xxxx年，xx大学，机械工程学院，研究生/硕士<br/>
-xxxx年－xxxx年，xx大学，机械工程学院，研究生/博士<br/>
-			""",cl="cv_content"))
+		self.table<<header
+		for item in infobuf:
+			self.table<<tr(td(item),cl="cv_content")
 
-		self.table<<tbody()<<header+content
 		return self.table
 
 	def makeprofile(self,infobuf=None):
+		"""
+		生成带有表头的表
+		params:
+			infobuf:表格内容
+		"""
 		self.table=table(cl="cv_profiletable")#总表
 		#3列td：图片占位，需要填写的信息，信息内容
 		imagecol=td("",id="image",width="25%")
 		infocol=td(id="info",width="25%",colspan="4")
 		detailcol=td("",id="detail",width="50%")
-
-		#infocol中包含一个表格，表格中包含4行tr
-		titlerow=tr(td(u"职称"),cl="cv_profile")
-		officerow=tr(td(u"办公室"),cl="cv_profile")
-		telrow=tr(td(u"联系电话"),cl="cv_profile")
-		emailrow=tr(td(u"E-mail"),cl="cv_profile")
-		# detailcol中包含一个表格，表格中包含4行tr
-		titleinfo=tr(td(u"教授"),cl="cv_profile")
-		officeinfo=tr(td(u"机械楼"),cl="cv_profile")
-		telinfo=tr(td(u"12312304"),cl="cv_profile")
-		emailinfo=tr(td(u"hanxiaomax@qq.com"),cl="cv_profile")
-
-		#先把4行插入表格，再把表格插入infocol这一列
-		infocol<<table()<<titlerow+officerow+telrow+emailrow
-		detailcol<<table()<<titleinfo+officeinfo+telinfo+emailinfo
-
+		for i in infobuf:
+			infocol<<table()<<tr(td(i[0]),cl="cv_profile")
+			detailcol<<table()<<tr(td(i[1]),cl="cv_profile")
 		# 将3个td插入tr标签，再插入表格中
 		self.table<<tbody()<<tr(imagecol+infocol+detailcol)
 		return self.table
